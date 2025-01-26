@@ -37,7 +37,7 @@ export default {
   name: "Home",
   setup() {
     const animeStore = useAnimeStore();
-    //sadassad
+    //
     const { animeList, loading, page } = storeToRefs(animeStore);
 
     return { animeStore, animeList, loading, page };

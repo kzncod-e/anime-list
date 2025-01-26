@@ -59,7 +59,7 @@ export const useAnimeStore = defineStore("anime", () => {
     loading,
     page,
     fetchAnime,
-    fetchPopularAnime, // Corrected typo here
+    fetchPopularAnime,
     nextPage,
     prevPage,
   };
