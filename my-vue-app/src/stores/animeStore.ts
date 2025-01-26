@@ -7,6 +7,7 @@ export const useAnimeStore = defineStore("anime", () => {
   const animeList = ref([]); // List of anime
   const loading = ref(false); // Loading state
   const page = ref(1); // Current page
+  const title = ref("All Anime");
 
   // Fetch all anime for the current page
   const fetchAnime = async () => {
@@ -15,6 +16,7 @@ export const useAnimeStore = defineStore("anime", () => {
       const response = await axios.get(
         `https://api.jikan.moe/v4/anime?page=${page.value}`
       );
+
       animeList.value = response.data.data;
     } catch (error) {
       console.error(`Error while fetching all anime: ${error}`);
@@ -31,6 +33,7 @@ export const useAnimeStore = defineStore("anime", () => {
       const response = await axios.get(
         `https://api.jikan.moe/v4/top/anime?page=${page.value}`
       );
+      title.value = "Popular Anime";
       animeList.value = response.data.data;
     } catch (error) {
       console.error(`Error while fetching popular anime: ${error}`);
@@ -58,6 +61,7 @@ export const useAnimeStore = defineStore("anime", () => {
     animeList,
     loading,
     page,
+    title,
     fetchAnime,
     fetchPopularAnime,
     nextPage,

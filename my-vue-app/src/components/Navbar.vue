@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar">
     <ul>
-      <li class="text-red-300"><a href="#home">Home</a></li>
+      <li class="text-red-300"><a href="/">Home</a></li>
       <li><a class="cursor-pointer" @click="fetchPopularAnime">Popular</a></li>
       <li><a href="#genres">Genres</a></li>
     </ul>
@@ -9,11 +9,19 @@
 </template>
 
 <script>
-import axios from "axios";
-import { inject, ref } from "vue";
+import { useAnimeStore } from "../stores/animeStore";
 
 export default {
   name: "Navbar",
+  setup() {
+    const animeStore = useAnimeStore();
+
+    const fetchPopularAnime = () => {
+      animeStore.fetchPopularAnime();
+    };
+
+    return { fetchPopularAnime };
+  },
 };
 </script>
 

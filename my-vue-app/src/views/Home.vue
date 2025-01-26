@@ -8,6 +8,9 @@
           <Loader class="" />
         </div>
         <div v-else class="flex flex-col justify-center items-center">
+          <h1 class="m-4 mt-6 pt-2 text-white text-3xl">
+            {{ animeStore.title }}
+          </h1>
           <Card
             :animeList="animeStore.animeList"
             :loading="animeStore.loading" />
@@ -38,9 +41,9 @@ export default {
   setup() {
     const animeStore = useAnimeStore();
     //
-    const { animeList, loading, page } = storeToRefs(animeStore);
+    const { animeList, loading, page, title } = storeToRefs(animeStore);
 
-    return { animeStore, animeList, loading, page };
+    return { animeStore, animeList, loading, page, title };
   },
   mounted() {
     this.animeStore.fetchAnime();
@@ -55,3 +58,4 @@ export default {
   background-repeat: no-repeat;
 }
 </style>
+ds
